@@ -21,6 +21,21 @@
 
 <x-guest-layout>
     <x-jet-authentication-card>
+
+        @php if(isset($_COOKIE['login_email']) && isset($_COOKIE['login_pass']))
+        {
+           $login_email = $_COOKIE['login_email'];
+           $login_pass  = $_COOKIE['login_pass'];
+           $is_remember = "checked='checked'";
+        }
+        else{
+           $login_email ='';
+           $login_pass = '';
+           $is_remember = "";
+         }
+        @endphp
+
+
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
         </x-slot>
@@ -38,17 +53,17 @@
 
             <div>
                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus value="{{$login_email}}"/>
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" value="{{$login_pass}}">
             </div>
 
             <div class="block mt-4">
                 <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
+                    <input class="form-check-input" type="checkbox" name="rememberme" id="rememberme" {{$is_remember}} {{ old('remember') ? 'checked' : '' }}>
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
             </div>

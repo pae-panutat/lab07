@@ -23,7 +23,7 @@
                     <th scope="row">{{ $row['id']}}</th>
                     <td>{{ $row['name']}}</td>
                     <td>{{ $row['email']}}</td>
-                    <td>{{ $row['created_at']}}</td>
+                    <td>{{ $row['updated_at']}}</td>
                     <td>{{ $row['email']}}</td>
                 </tr>
                 @endforeach
