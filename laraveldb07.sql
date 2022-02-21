@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2022 at 04:30 PM
+-- Generation Time: Feb 21, 2022 at 04:38 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -20,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `laraveldb07`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `departments`
+--
+
+CREATE TABLE `departments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `department_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `departments`
+--
+
+INSERT INTO `departments` (`id`, `user_id`, `department_name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 4, 'ฝ่ายโฆษณา', '2022-02-21 09:06:57', '2022-02-21 09:06:57', NULL),
+(2, 4, 'กราฟฟิกดีไซน์', '2022-02-21 09:19:38', '2022-02-21 09:19:38', NULL),
+(3, 4, 'โปรแกรมเมอร์', '2022-02-21 09:23:08', '2022-02-21 09:23:08', NULL),
+(4, 4, 'ฝ่ายการตลาด', '2022-02-21 09:23:33', '2022-02-21 09:23:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -59,7 +84,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
 (4, '2019_08_19_000000_create_failed_jobs_table', 1),
 (5, '2022_02_17_034154_create_sessions_table', 1),
-(6, '2019_12_14_000001_create_personal_access_tokens_table', 2);
+(6, '2019_12_14_000001_create_personal_access_tokens_table', 2),
+(7, '2022_02_21_110332_create_departments_table', 3);
 
 -- --------------------------------------------------------
 
@@ -111,8 +137,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('P5vuVSzKTOg2WaVqGayUA0rSnbpe944OLU4K8RXf', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiZWJKcHNpbGFMVUlFaWV1eWU3ck1hNVczMjVBbldKb1RwNzMzaTVsUSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkYXFmQ0pRNFJkT0lwLmtodWkxNWhnLlBuMXYweGpWc2NMM0s5TXc5UXdzU3RDcHp4dHZ4RUsiO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJGFxZkNKUTRSZE9JcC5raHVpMTVoZy5QbjF2MHhqVnNjTDNLOU13OVF3c1N0Q3B6eHR2eEVLIjt9', 1645085450),
-('t9j4DVca8pj3hISYNRxi7dzNxx2ACiEqN5fAsDsa', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiNlFDWG84ZG40a1lyMHVlNTNBcXBpQ2NPemRiS2tDaEE0Z1lnYWNtSiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkRG1pQkRQeEJITWp1LkhBdXZxb3JLLnZybUJ2enZtNXJKMTh2dmxJN2taU2IvMS5wcnBkek8iO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJERtaUJEUHhCSE1qdS5IQXV2cW9ySy52cm1Cdnp2bTVySjE4dnZsSTdrWlNiLzEucHJwZHpPIjt9', 1645090222);
+('79tQdWcCDWAYLz4dVT6agX6rCMArvyyacOTGBOfK', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoidVh4WEFQNWgzOGlkZ3hCaGcyS2J0dEhhUjJMbEY3Z20yTHBRYlhSdiI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJG9TcjVMSmFzZ2NoU1o1UVV6bFllUE9TNGxoY0ZpSWcwdGo4ZVB6Lld0NUtMcFg5bFJVbThhIjtzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozNjoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2RlcGFydG1lbnQvYWxsIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkb1NyNUxKYXNnY2hTWjVRVXpsWWVQT1M0bGhjRmlJZzB0ajhlUHouV3Q1S0xwWDlsUlVtOGEiO30=', 1645436223);
 
 -- --------------------------------------------------------
 
@@ -140,13 +165,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'panutat', 'panutatinfo@gmail.com', NULL, '$2y$10$c4Xrq5VJAh//CFnlpPZIKuIJtthjSA9U8pwtrx/QeP0Tuvur7r08e', NULL, NULL, NULL, NULL, NULL, '2022-02-16 21:10:41', '2022-02-16 21:10:41'),
-(2, 'pae', 'pae@pae.com', NULL, '$2y$10$aqfCJQ4RdOIp.khui15hg.Pn1v0xjVscL3K9Mw9QwsStCpzxtvxEK', NULL, NULL, NULL, NULL, NULL, '2022-02-17 00:26:50', '2022-02-17 00:26:50'),
-(3, 'siam', 'siam@siam.com', NULL, '$2y$10$DmiBDPxBHMju.HAuvqorK.vrmBvzvm5rJ18vvlI7kZSb/1.prpdzO', NULL, NULL, '28ZItrucwWSmmLF64vQ5XKrn4lxkLMLtz3sDJtYZGYi1qyiQGO3j99tKPabJ', NULL, NULL, '2022-02-17 08:44:20', '2022-02-17 09:30:12');
+(3, 'siam', 'siam@siam.com', NULL, '$2y$10$DmiBDPxBHMju.HAuvqorK.vrmBvzvm5rJ18vvlI7kZSb/1.prpdzO', NULL, NULL, 'T1xY8C83KgsI0Ryvod8Ydf6QvzO4IhFRgnVA6oG6RZXQFZzDu3F6DbYQcMmn', NULL, NULL, '2022-02-17 08:44:20', '2022-02-21 03:54:14'),
+(4, 'pae', 'pae@pae.com', NULL, '$2y$10$oSr5LJasgchSZ5QUzlYePOS4lhcFiIg0tj8ePz.Wt5KLpX9lRUm8a', NULL, NULL, 'iG9vSJNPoAmCKQFpZSHE7NPgDThBb5RFeF7x4doleYJF5lYO4FvJ01eZy19O', NULL, NULL, '2022-02-21 02:24:53', '2022-02-21 03:29:43');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `departments`
+--
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -195,6 +225,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -204,7 +240,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -216,7 +252,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
