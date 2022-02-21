@@ -16,7 +16,7 @@
                     @endif
                    <div class="card my-2">
                        <div class="card-header">
-                            ตารางข้อมูลแผนก
+                            ตารางข้อมูลแผนก {{ $departments }}
                        </div>
                    </div>
                 </div>

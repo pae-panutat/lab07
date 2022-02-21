@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Department;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class DepartmentController extends Controller
 {
     public function index(){
-        return view('admin.department.index');
+        $departments = Department::all();
+        return view('admin.department.index', compact('departments'));
     }
 
     public function store(Request $request){
@@ -25,11 +28,19 @@ class DepartmentController extends Controller
             ]
         );
 
-        $department = new Department;
+        //Eloquent
+        /* $department = new Department;
         $department->department_name = $request->department_name;
         $department->user_id = Auth::User()->id;
-        // dd($department->user_id);
-        $department->save();
+        $department->save(); */
+
+        //Query Builder
+        $data = array();
+        $data['department_name'] = $request->department_name;
+        $data['user_id'] = Auth::User()->id;
+        $data['created_at'] = now();
+        DB::table('departments')->insert($data);
+
         return redirect()->back()->with('success', "บันทึกข้อมูลเรียบร้อย");
     }
 }
