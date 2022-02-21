@@ -78,7 +78,7 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="rememberme" id="rememberme" {{$is_remember}} {{ old('rememberme') ? 'checked' : '' }}>
 
-                        <label class="form-check-label" for="remember">
+                        <label class="form-check-label" for="rememberme">
                             {{ __('Remember Me') }}
                         </label>
                     </div>
