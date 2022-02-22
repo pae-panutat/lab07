@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2022 at 04:38 PM
+-- Generation Time: Feb 22, 2022 at 04:33 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -44,7 +44,12 @@ INSERT INTO `departments` (`id`, `user_id`, `department_name`, `created_at`, `up
 (1, 4, 'ฝ่ายโฆษณา', '2022-02-21 09:06:57', '2022-02-21 09:06:57', NULL),
 (2, 4, 'กราฟฟิกดีไซน์', '2022-02-21 09:19:38', '2022-02-21 09:19:38', NULL),
 (3, 4, 'โปรแกรมเมอร์', '2022-02-21 09:23:08', '2022-02-21 09:23:08', NULL),
-(4, 4, 'ฝ่ายการตลาด', '2022-02-21 09:23:33', '2022-02-21 09:23:33', NULL);
+(4, 4, 'ฝ่ายการตลาด', '2022-02-21 09:23:33', '2022-02-21 09:23:33', NULL),
+(12, 4, 'ฝ่ายจัดซื้อ', '2022-02-22 02:35:50', '2022-02-22 02:35:50', NULL),
+(13, 4, 'ผู้ดูแลระบบ', '2022-02-22 02:44:20', '2022-02-22 02:44:20', NULL),
+(14, 4, 'ฝ่ายบัญชี', '2022-02-22 02:56:30', '2022-02-22 02:56:30', NULL),
+(15, 3, 'ฝ่ายกฏหมาย', '2022-02-22 03:23:56', '2022-02-22 03:23:56', NULL),
+(16, 3, 'ฝ่ายดับเพลิง', '2022-02-22 03:24:07', '2022-02-22 03:24:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -137,7 +142,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('79tQdWcCDWAYLz4dVT6agX6rCMArvyyacOTGBOfK', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoidVh4WEFQNWgzOGlkZ3hCaGcyS2J0dEhhUjJMbEY3Z20yTHBRYlhSdiI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJG9TcjVMSmFzZ2NoU1o1UVV6bFllUE9TNGxoY0ZpSWcwdGo4ZVB6Lld0NUtMcFg5bFJVbThhIjtzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozNjoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2RlcGFydG1lbnQvYWxsIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkb1NyNUxKYXNnY2hTWjVRVXpsWWVQT1M0bGhjRmlJZzB0ajhlUHouV3Q1S0xwWDlsUlVtOGEiO30=', 1645436223);
+('6TteU4N6TR3wXxzigShzbji9swMBudvAwLuOJqTJ', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiZk11eTRjNFc0ajY5aUVIUFQwRFBzYzNNVTFVUmRYeXV1M1VVcWU2YyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kZXBhcnRtZW50L2FsbD9wYWdlPTEiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkRG1pQkRQeEJITWp1LkhBdXZxb3JLLnZybUJ2enZtNXJKMTh2dmxJN2taU2IvMS5wcnBkek8iO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJERtaUJEUHhCSE1qdS5IQXV2cW9ySy52cm1Cdnp2bTVySjE4dnZsSTdrWlNiLzEucHJwZHpPIjt9', 1645501116),
+('ic01qibFEQU2cjUxnsWqMMk5THsUscz4ECcum43V', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiVlJVUTQ0QlBHY3g2OGlzck1qWTNOVmdiWEZGMngxOTl1WnVCd1RlNiI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MztzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJERtaUJEUHhCSE1qdS5IQXV2cW9ySy52cm1Cdnp2bTVySjE4dnZsSTdrWlNiLzEucHJwZHpPIjtzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czo0MDoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2RlcGFydG1lbnQvZWRpdC8xNiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJERtaUJEUHhCSE1qdS5IQXV2cW9ySy52cm1Cdnp2bTVySjE4dnZsSTdrWlNiLzEucHJwZHpPIjt9', 1645522311);
 
 -- --------------------------------------------------------
 
@@ -165,8 +171,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(3, 'siam', 'siam@siam.com', NULL, '$2y$10$DmiBDPxBHMju.HAuvqorK.vrmBvzvm5rJ18vvlI7kZSb/1.prpdzO', NULL, NULL, 'T1xY8C83KgsI0Ryvod8Ydf6QvzO4IhFRgnVA6oG6RZXQFZzDu3F6DbYQcMmn', NULL, NULL, '2022-02-17 08:44:20', '2022-02-21 03:54:14'),
-(4, 'pae', 'pae@pae.com', NULL, '$2y$10$oSr5LJasgchSZ5QUzlYePOS4lhcFiIg0tj8ePz.Wt5KLpX9lRUm8a', NULL, NULL, 'iG9vSJNPoAmCKQFpZSHE7NPgDThBb5RFeF7x4doleYJF5lYO4FvJ01eZy19O', NULL, NULL, '2022-02-21 02:24:53', '2022-02-21 03:29:43');
+(3, 'siam', 'siam@siam.com', NULL, '$2y$10$DmiBDPxBHMju.HAuvqorK.vrmBvzvm5rJ18vvlI7kZSb/1.prpdzO', NULL, NULL, 'ygQUv31U5QJJQZIIwbcaYk1nL2KDl9lI8WlxQKWdRCIqgOc6si6Lm5a3FTDi', NULL, NULL, '2022-02-17 08:44:20', '2022-02-22 03:24:12'),
+(4, 'pae', 'pae@pae.com', NULL, '$2y$10$oSr5LJasgchSZ5QUzlYePOS4lhcFiIg0tj8ePz.Wt5KLpX9lRUm8a', NULL, NULL, 'NrwYYXY3zvfFgYo1N3wo9LQBWONdzk0knbQa3iqBVndKWMjQjqkKx6nr0S8R', NULL, NULL, '2022-02-21 02:24:53', '2022-02-22 03:23:28');
 
 --
 -- Indexes for dumped tables
@@ -228,7 +234,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`

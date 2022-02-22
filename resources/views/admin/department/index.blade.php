@@ -14,9 +14,38 @@
                         <span>{{ session('success') }}</span>
                     </div>
                     @endif
-                   <div class="card my-2">
-                       <div class="card-header">
-                            ตารางข้อมูลแผนก {{ $departments }}
+                   <div class="card">
+                       <div>
+                        <div class="card-header">ตารางข้อมูลแผนก</div>
+                            <div class="card-body">
+                            <table class="table table-striped table-bordered my-2">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">ชื่อแผนก</th>
+                                    <th scope="col">ชื่อพนักงาน</th>
+                                    <th scope="col">Created_at</th>
+                                    <th scope="col">แก้ไข</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    {{-- @php($i=1) --}}
+                                    @foreach ($departments as $row)
+                                    <tr>
+                                        <th scope="row">{{ $departments->firstItem()+$loop->index }}</th>
+                                        <td>{{ $row->department_name }}</td>
+                                        {{-- <td>{{ $row->user->name }}</td> --}}
+                                        <td>{{ $row->name }}</td>
+                                        <td>{{ Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</td>
+                                        <td>
+                                            <a href="{{ route('editDepartment', $row->id )}}" class="btn btn-warning btn-sm">Edit</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                              </table>
+                              {{ $departments->links() }}
+                            </div>
                        </div>
                    </div>
                 </div>

@@ -11,7 +11,16 @@ use Illuminate\Support\Facades\DB;
 class DepartmentController extends Controller
 {
     public function index(){
-        $departments = Department::all();
+        //Eloquent
+        // $departments = Department::all(); // ดึงมาทั้งหมด
+        // $departments = Department::paginate(5); // ดึงแบบแบ่งหน้า
+
+        //Query Builder
+        // $departments = DB::table('departments')->get(); // ดึงมาทั้งหมด
+        $departments = DB::table('departments')
+                        ->join('users', 'departments.user_id', 'users.id')
+                        ->select('departments.*', 'users.name')
+                        ->paginate(5); // ดึงแบบแบ่งหน้า
         return view('admin.department.index', compact('departments'));
     }
 
@@ -42,5 +51,11 @@ class DepartmentController extends Controller
         DB::table('departments')->insert($data);
 
         return redirect()->back()->with('success', "บันทึกข้อมูลเรียบร้อย");
+    }
+
+    public function edit($id){
+        $department = Department::find($id);
+        dd($department->department_name);
+
     }
 }
