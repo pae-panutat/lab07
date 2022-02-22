@@ -24,7 +24,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">ชื่อแผนก</th>
                                     <th scope="col">ชื่อพนักงาน</th>
-                                    <th scope="col">Created_at</th>
+                                    <th scope="col">สร้างเมื่อ</th>
                                     <th scope="col">แก้ไข</th>
                                   </tr>
                                 </thead>

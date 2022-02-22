@@ -55,7 +55,28 @@ class DepartmentController extends Controller
 
     public function edit($id){
         $department = Department::find($id);
-        dd($department->department_name);
+        /* dd($department->department_name); */
+        return view('admin.department.edit', compact('department'));
+    }
 
+    public function update(Request $request, $id){
+        //ตรวจาอบข้อมูล
+        $request->validate(
+            [
+                'department_name' => 'required|unique:departments|max:255',
+            ],
+            [
+                'department_name.required' => "กรุณาป้อนชื่อแผนกด้วยค่ะ",
+                'department_name.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
+                'department_name.unique' => "มีข้อมูลชื่อแผนกนี้ในฐานข้อมูลแล้วค่ะ",
+            ]
+        );
+
+        //Eloquent
+        $update = Department::find($id)->update([
+                    'department_name' => $request->department_name,
+                    'user_id' => Auth::User()->id
+        ]);
+        return redirect()->route('department')->with('success', "อัพเดทข้อมูลเรียบร้อย");
     }
 }
