@@ -13,15 +13,16 @@ class DepartmentController extends Controller
     public function index(){
         //Eloquent
         // $departments = Department::all(); // ดึงมาทั้งหมด
-        // $departments = Department::paginate(5); // ดึงแบบแบ่งหน้า
+        $departments = Department::paginate(5); // ดึงแบบแบ่งหน้า
+        $trashDepartments = Department::onlyTrashed()->paginate(5);;
 
         //Query Builder
         // $departments = DB::table('departments')->get(); // ดึงมาทั้งหมด
-        $departments = DB::table('departments')
-                        ->join('users', 'departments.user_id', 'users.id')
-                        ->select('departments.*', 'users.name')
-                        ->paginate(5); // ดึงแบบแบ่งหน้า
-        return view('admin.department.index', compact('departments'));
+        // $departments = DB::table('departments')
+        //                 ->join('users', 'departments.user_id', 'users.id')
+        //                 ->select('departments.*', 'users.name')
+        //                 ->paginate(5); // ดึงแบบแบ่งหน้า
+        return view('admin.department.index', compact('departments', 'trashDepartments'));
     }
 
     public function store(Request $request){
@@ -55,7 +56,6 @@ class DepartmentController extends Controller
 
     public function edit($id){
         $department = Department::find($id);
-        /* dd($department->department_name); */
         return view('admin.department.edit', compact('department'));
     }
 
@@ -78,5 +78,20 @@ class DepartmentController extends Controller
                     'user_id' => Auth::User()->id
         ]);
         return redirect()->route('department')->with('success', "อัพเดทข้อมูลเรียบร้อย");
+    }
+
+    public function softdelete($id){
+        $delete = Department::find($id)->delete();
+        return redirect()->back()->with('success', "ลบข้อมูลเรียบร้อย");
+    }
+
+    public function restore($id){
+        $restore = Department::withTrashed()->find($id)->restore();
+        return redirect()->back()->with('success', "กู้คืนข้อมูลเรียบร้อย");
+    }
+
+    public function delete($id){
+        $delete = Department::onlyTrashed()->find($id)->forceDelete();
+        return redirect()->back()->with('success', "ลบข้อมูลถาวรเรียบร้อย");
     }
 }
