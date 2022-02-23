@@ -14,7 +14,7 @@ class DepartmentController extends Controller
         //Eloquent
         // $departments = Department::all(); // ดึงมาทั้งหมด
         $departments = Department::paginate(5); // ดึงแบบแบ่งหน้า
-        $trashDepartments = Department::onlyTrashed()->paginate(5);;
+        $trashDepartments = Department::onlyTrashed()->paginate(5);
 
         //Query Builder
         // $departments = DB::table('departments')->get(); // ดึงมาทั้งหมด
