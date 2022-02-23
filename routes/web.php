@@ -43,5 +43,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     //Services
     Route::get('/services/all', [ServiceController::class, 'index'])->name('services');
+    Route::post('/services/add', [ServiceController::class, 'store'])->name('addServices');
 });
 

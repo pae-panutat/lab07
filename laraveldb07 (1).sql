@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2022 at 04:21 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Feb 23, 2022 at 05:02 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -137,6 +137,14 @@ CREATE TABLE `services` (
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`id`, `service_name`, `service_image`, `created_at`, `updated_at`) VALUES
+(9, 'asdfadหกดฟกด', 'image/services\\1645631859.jpg', '2022-02-23 15:57:39', '2022-02-23 15:57:39'),
+(10, 'หฟกดฟหกดฟหกดฟกด', 'image/services\\1645632054.png', '2022-02-23 16:00:54', '2022-02-23 16:00:54');
+
 -- --------------------------------------------------------
 
 --
@@ -157,7 +165,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('7e6OYlN4bZPVfuZcPM0POgYP6USBdv2IOvBIgfCD', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoia1dxR29wbXpGSXpJZzF4YkdNeTFiVEkxaG1hWERQOHVrcWR6OTEzdCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZXJ2aWNlcy9hbGwiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkRG1pQkRQeEJITWp1LkhBdXZxb3JLLnZybUJ2enZtNXJKMTh2dmxJN2taU2IvMS5wcnBkek8iO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJERtaUJEUHhCSE1qdS5IQXV2cW9ySy52cm1Cdnp2bTVySjE4dnZsSTdrWlNiLzEucHJwZHpPIjt9', 1645607847);
+('Rw0ljejy5yVXcN5zLbAG3LLfMb8gkz6eiz7rRIsT', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiMEtIOHJNaGFZVnZzeTh2UzU4eWhZTjBTNExlTGU0aWpGQm1HSFFtTyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZXJ2aWNlcy9hbGwiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkRG1pQkRQeEJITWp1LkhBdXZxb3JLLnZybUJ2enZtNXJKMTh2dmxJN2taU2IvMS5wcnBkek8iO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJERtaUJEUHhCSE1qdS5IQXV2cW9ySy52cm1Cdnp2bTVySjE4dnZsSTdrWlNiLzEucHJwZHpPIjt9', 1645632089);
 
 -- --------------------------------------------------------
 
@@ -278,7 +286,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
