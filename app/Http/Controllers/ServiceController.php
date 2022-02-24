@@ -63,6 +63,66 @@ class ServiceController extends Controller
         ]);
         // $service_image->move($upload_location.$img_name);
         return redirect()->back()->with('success', "บันทึกข้อมูลเรียบร้อย");
-
     }
+
+    public function edit($id){
+        $service = Service::find($id);
+        return view('admin.service.edit', compact('service'));
+    }
+
+    public function update(Request $request, $id){
+        // dd($request->old_image);
+        $request->validate(
+            [
+                'service_name' => 'required|max:255',
+                // 'service_image' => 'mimes:jpg,jpeg,png'
+            ],
+            [
+                'service_name.required' => "กรุณาป้อนชื่อบริการด้วยค่ะ",
+                'service_name.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
+            ]
+        );
+
+        // dd($request->service_name, $request->service_image);
+        $service_image = $request->file('service_image');
+
+        if($service_image){
+            // //อัพโหลดและอัพเดทข้อมูล
+            $upload_location = 'image/services/';
+            // $full_path = $upload_location.$img_name;
+
+            $imageName = time().'.'.$request->service_image->extension();  
+            $full_path = $request->service_image->move($upload_location, $imageName);
+
+            //บันทึกและอัพภาพใหม่แทนที่
+            Service::find($id)->update([
+                'service_name' => $request->service_name,
+                'service_image' => $full_path,
+                'created_at' => Carbon::now()
+            ]);
+
+
+            //ลบภาเก่าและเอ
+            $old_image = $request->old_image;
+            unlink($old_image);
+            
+            return redirect()->route('services')->with('success', "อัพเดทภาพเรียบร้อย");
+        } else {
+            Service::find($id)->update([
+                'service_name' => $request->service_name,
+                'created_at' => Carbon::now()
+            ]);
+            return redirect()->route('services')->with('success', "อัพเดทชื่อบริการเรียบร้อย");
+        }
+    }
+
+    public function delete($id){
+        $img = Service::find($id);
+        if ($img->service_image){
+            unlink($img->service_image);
+            Service::find($id)->delete();
+            return redirect()->back()->with('success', "ลบข้อมูลเรียบร้อย");
+        } 
+    }
+
 }

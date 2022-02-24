@@ -24,6 +24,7 @@
                                     <th scope="col">ภาพประกอบ</th>
                                     <th scope="col">ชื่อบริการ</th>
                                     <th scope="col">Created_at</th>
+                                    <th scope="col">Updated_at</th>
                                     <th scope="col">Edit</th>
                                     <th scope="col">Delete</th>
                                 </tr>
@@ -34,16 +35,19 @@
                                     <tr>
                                         <th scope="row">{{ $services->firstItem()+$loop->index }}</th>
                                         <td>
-                                            <img src={{ asset($row->service_image) }} width="150px" height="150px" alt="" />
+                                            <img src={{ asset($row->service_image) }} width="80px" height="80px" alt="" />
                                         </td>
                                         <td>{{ $row->service_name }}</td>
                                         {{-- <td>{{ $row->name }}</td> --}}
                                         <td>{{ Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</td>
+                                        <td>{{ Carbon\Carbon::parse($row->updated_at)->diffForHumans() }}</td>
                                         <td>
-                                            <a href="{{ route('restoreDepartment', $row->id )}}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                            <a href="{{ route('editService', $row->id, $row->service_image )}}" class="btn btn-warning btn-sm">แก้ไข</a>
                                         </td>
                                         <td>
-                                            <a href="{{ url('/department/delete', $row->id) }}" class="btn btn-danger btn-sm deleteForm">ลบข้อมูล</a>
+                                            <a href="{{ url('/service/delete', $row->id) }}" 
+                                                class="btn btn-danger btn-sm deleteForm" 
+                                                onclick="return confirm('คุณต้องการลบข้อมูลใช่หรือไม่?')">ลบข้อมูล</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -89,15 +93,4 @@
             </div>
        </div>
     </div>
-     <script>
-        $( document ).ready(function() {
-            $('.deleteForm').click('submit', function(){
-                if(confirm('ต้องการลบข้อมูล?')){
-                    return true;
-                } else {
-                    return false;
-                }
-            })            
-        });
-    </script>
 </x-app-layout>
