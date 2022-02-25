@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\PanutatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +48,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/service/edit/{id}', [ServiceController::class, 'edit'])->name('editService');
     Route::post('/service/update/{id}', [ServiceController::class, 'update'])->name('updateService');
     Route::get('/service/delete/{id}', [ServiceController::class, 'delete']);
+
+    Route::get('/panutat/all', [PanutatController::class, 'index'])->name('panutat');
 });
 

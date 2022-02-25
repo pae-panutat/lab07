@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2022 at 05:02 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 7.3.29
+-- Generation Time: Feb 25, 2022 at 03:35 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -91,7 +91,32 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2022_02_17_034154_create_sessions_table', 1),
 (6, '2019_12_14_000001_create_personal_access_tokens_table', 2),
 (7, '2022_02_21_110332_create_departments_table', 3),
-(8, '2022_02_23_151009_create_services_table', 4);
+(8, '2022_02_23_151009_create_services_table', 4),
+(9, '2022_02_25_141232_create_siams_table', 5),
+(10, '2022_02_25_141300_create_paes_table', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `paes`
+--
+
+CREATE TABLE `paes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `data` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `paes`
+--
+
+INSERT INTO `paes` (`id`, `name_id`, `data`, `created_at`, `updated_at`) VALUES
+(1, '4', '55.32', '2022-02-25 07:17:05', '2022-02-25 07:17:10'),
+(2, '4', '49.65', '2022-02-25 07:17:19', '2022-02-25 07:17:21'),
+(3, '4', '12.33', '2022-02-25 07:17:19', '2022-02-25 07:17:21');
 
 -- --------------------------------------------------------
 
@@ -142,8 +167,9 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `service_name`, `service_image`, `created_at`, `updated_at`) VALUES
-(9, 'asdfadหกดฟกด', 'image/services\\1645631859.jpg', '2022-02-23 15:57:39', '2022-02-23 15:57:39'),
-(10, 'หฟกดฟหกดฟหกดฟกด', 'image/services\\1645632054.png', '2022-02-23 16:00:54', '2022-02-23 16:00:54');
+(1, 'ทดสอบ1', 'image/services\\1645754676.jpg', '2022-02-25 02:04:36', '2022-02-25 06:59:41'),
+(2, 'เทส', 'image/services\\1645754687.jpg', '2022-02-25 02:04:47', '2022-02-25 02:04:47'),
+(3, 'ทดสอบ2', 'image/services\\1645772364.jpg', '2022-02-25 02:04:56', '2022-02-25 06:59:24');
 
 -- --------------------------------------------------------
 
@@ -165,7 +191,31 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('Rw0ljejy5yVXcN5zLbAG3LLfMb8gkz6eiz7rRIsT', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiMEtIOHJNaGFZVnZzeTh2UzU4eWhZTjBTNExlTGU0aWpGQm1HSFFtTyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZXJ2aWNlcy9hbGwiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkRG1pQkRQeEJITWp1LkhBdXZxb3JLLnZybUJ2enZtNXJKMTh2dmxJN2taU2IvMS5wcnBkek8iO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJERtaUJEUHhCSE1qdS5IQXV2cW9ySy52cm1Cdnp2bTVySjE4dnZsSTdrWlNiLzEucHJwZHpPIjt9', 1645632089);
+('BgiIAMHGEE15kGBpDtDX51iTlsV4Xy1qVTUXt8fm', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiNVhDNzh6cE0waklpdlB0eVBTNUhtcVZhODI4RGFHMm00SUtTamo4MyI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MztzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJERtaUJEUHhCSE1qdS5IQXV2cW9ySy52cm1Cdnp2bTVySjE4dnZsSTdrWlNiLzEucHJwZHpPIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCREbWlCRFB4QkhNanUuSEF1dnFvcksudnJtQnZ6dm01ckoxOHZ2bEk3a1pTYi8xLnBycGR6TyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1645772324),
+('VOOgg241BiCJXGshpP5Lat0edcKWJFbyj7dA4k6t', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiVUljZ2NzdGg2dWZzNjkzQjBJYkdnRm1hME9CVmxiQkhrNE00dnhxcSI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MztzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJERtaUJEUHhCSE1qdS5IQXV2cW9ySy52cm1Cdnp2bTVySjE4dnZsSTdrWlNiLzEucHJwZHpPIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCREbWlCRFB4QkhNanUuSEF1dnFvcksudnJtQnZ6dm01ckoxOHZ2bEk3a1pTYi8xLnBycGR6TyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1645772323),
+('yB5CShMEe7b6ODJFMnKrShzMt6zsdr3QiFSYFx6b', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUmVvVnBCUHU2R1BUUEVNemdoc2xoUktUanNsUWVvYjFKOWhJZ1FIMiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fX0=', 1645778131);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `siams`
+--
+
+CREATE TABLE `siams` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `data` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `siams`
+--
+
+INSERT INTO `siams` (`id`, `name_id`, `data`, `created_at`, `updated_at`) VALUES
+(1, '3', '78.96', '2022-02-25 07:17:59', '2022-02-25 07:18:02'),
+(2, '3', '32.45', '2022-02-25 07:18:04', '2022-02-25 07:18:06');
 
 -- --------------------------------------------------------
 
@@ -193,8 +243,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(3, 'siam', 'siam@siam.com', NULL, '$2y$10$DmiBDPxBHMju.HAuvqorK.vrmBvzvm5rJ18vvlI7kZSb/1.prpdzO', NULL, NULL, 'lzXx3XmOOBA6VdDJX2S86cshJVAbpQXhmcEID9EfoPYxveI9pGgx4OJXlBVE', NULL, NULL, '2022-02-17 08:44:20', '2022-02-23 07:11:23'),
-(4, 'pae', 'pae@pae.com', NULL, '$2y$10$oSr5LJasgchSZ5QUzlYePOS4lhcFiIg0tj8ePz.Wt5KLpX9lRUm8a', NULL, NULL, '9wto8ZH6XOocj74g8xD13YS8UwiBaUU6Co2bUmDrgX175bw14ZdmHxRFQoya', NULL, NULL, '2022-02-21 02:24:53', '2022-02-23 07:35:08');
+(3, 'siams', 'siam@siam.com', NULL, '$2y$10$DmiBDPxBHMju.HAuvqorK.vrmBvzvm5rJ18vvlI7kZSb/1.prpdzO', NULL, NULL, 'xmQVZeqhYBnsClBfCN1kzuQIwUqH3pX5ZzZmyfQNTvYuBv5Nou1FJM829WKP', NULL, NULL, '2022-02-17 08:44:20', '2022-02-25 08:35:31'),
+(4, 'paes', 'pae@pae.com', NULL, '$2y$10$oSr5LJasgchSZ5QUzlYePOS4lhcFiIg0tj8ePz.Wt5KLpX9lRUm8a', NULL, NULL, 'cry1QCCNyrY062AgGrSDb613cnc286FM42bB5fsjzUhG0kCGehxc40mz4Mg8', NULL, NULL, '2022-02-21 02:24:53', '2022-02-25 08:35:17');
 
 --
 -- Indexes for dumped tables
@@ -217,6 +267,12 @@ ALTER TABLE `failed_jobs`
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `paes`
+--
+ALTER TABLE `paes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -248,6 +304,12 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
+-- Indexes for table `siams`
+--
+ALTER TABLE `siams`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -274,7 +336,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `paes`
+--
+ALTER TABLE `paes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -286,7 +354,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `siams`
+--
+ALTER TABLE `siams`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
