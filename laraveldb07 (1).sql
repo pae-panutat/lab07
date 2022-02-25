@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2022 at 03:35 PM
+-- Generation Time: Feb 25, 2022 at 03:50 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -105,6 +105,7 @@ CREATE TABLE `paes` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `data` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `data2` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -113,10 +114,10 @@ CREATE TABLE `paes` (
 -- Dumping data for table `paes`
 --
 
-INSERT INTO `paes` (`id`, `name_id`, `data`, `created_at`, `updated_at`) VALUES
-(1, '4', '55.32', '2022-02-25 07:17:05', '2022-02-25 07:17:10'),
-(2, '4', '49.65', '2022-02-25 07:17:19', '2022-02-25 07:17:21'),
-(3, '4', '12.33', '2022-02-25 07:17:19', '2022-02-25 07:17:21');
+INSERT INTO `paes` (`id`, `name_id`, `data`, `data2`, `created_at`, `updated_at`) VALUES
+(1, '4', '55.32', 3, '2022-02-25 07:17:05', '2022-02-25 07:17:10'),
+(2, '4', '49.65', 8, '2022-02-25 07:17:19', '2022-02-25 07:17:21'),
+(3, '4', '12.33', 12, '2022-02-25 07:17:19', '2022-02-25 07:17:21');
 
 -- --------------------------------------------------------
 
@@ -193,7 +194,7 @@ CREATE TABLE `sessions` (
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
 ('BgiIAMHGEE15kGBpDtDX51iTlsV4Xy1qVTUXt8fm', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiNVhDNzh6cE0waklpdlB0eVBTNUhtcVZhODI4RGFHMm00SUtTamo4MyI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MztzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJERtaUJEUHhCSE1qdS5IQXV2cW9ySy52cm1Cdnp2bTVySjE4dnZsSTdrWlNiLzEucHJwZHpPIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCREbWlCRFB4QkhNanUuSEF1dnFvcksudnJtQnZ6dm01ckoxOHZ2bEk3a1pTYi8xLnBycGR6TyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1645772324),
 ('VOOgg241BiCJXGshpP5Lat0edcKWJFbyj7dA4k6t', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiVUljZ2NzdGg2dWZzNjkzQjBJYkdnRm1hME9CVmxiQkhrNE00dnhxcSI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MztzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJERtaUJEUHhCSE1qdS5IQXV2cW9ySy52cm1Cdnp2bTVySjE4dnZsSTdrWlNiLzEucHJwZHpPIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCREbWlCRFB4QkhNanUuSEF1dnFvcksudnJtQnZ6dm01ckoxOHZ2bEk3a1pTYi8xLnBycGR6TyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1645772323),
-('yB5CShMEe7b6ODJFMnKrShzMt6zsdr3QiFSYFx6b', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUmVvVnBCUHU2R1BUUEVNemdoc2xoUktUanNsUWVvYjFKOWhJZ1FIMiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fX0=', 1645778131);
+('Ym541KJBDv92q0F4s3GNW3qtEy0wkCoX5MIqQn8m', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoib0tzOUdYTkp2UVhjQ05XQXpRR2dkR29qblBMNkY3czJzUFBYQnEwWiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wYW51dGF0L2FsbCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjM7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCREbWlCRFB4QkhNanUuSEF1dnFvcksudnJtQnZ6dm01ckoxOHZ2bEk3a1pTYi8xLnBycGR6TyI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkRG1pQkRQeEJITWp1LkhBdXZxb3JLLnZybUJ2enZtNXJKMTh2dmxJN2taU2IvMS5wcnBkek8iO30=', 1645778833);
 
 -- --------------------------------------------------------
 
@@ -205,6 +206,7 @@ CREATE TABLE `siams` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `data` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `data2` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -213,9 +215,9 @@ CREATE TABLE `siams` (
 -- Dumping data for table `siams`
 --
 
-INSERT INTO `siams` (`id`, `name_id`, `data`, `created_at`, `updated_at`) VALUES
-(1, '3', '78.96', '2022-02-25 07:17:59', '2022-02-25 07:18:02'),
-(2, '3', '32.45', '2022-02-25 07:18:04', '2022-02-25 07:18:06');
+INSERT INTO `siams` (`id`, `name_id`, `data`, `data2`, `created_at`, `updated_at`) VALUES
+(1, '3', '78.96', 2, '2022-02-25 07:17:59', '2022-02-25 07:18:02'),
+(2, '3', '32.45', 1, '2022-02-25 07:18:04', '2022-02-25 07:18:06');
 
 -- --------------------------------------------------------
 
@@ -243,8 +245,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(3, 'siams', 'siam@siam.com', NULL, '$2y$10$DmiBDPxBHMju.HAuvqorK.vrmBvzvm5rJ18vvlI7kZSb/1.prpdzO', NULL, NULL, 'xmQVZeqhYBnsClBfCN1kzuQIwUqH3pX5ZzZmyfQNTvYuBv5Nou1FJM829WKP', NULL, NULL, '2022-02-17 08:44:20', '2022-02-25 08:35:31'),
-(4, 'paes', 'pae@pae.com', NULL, '$2y$10$oSr5LJasgchSZ5QUzlYePOS4lhcFiIg0tj8ePz.Wt5KLpX9lRUm8a', NULL, NULL, 'cry1QCCNyrY062AgGrSDb613cnc286FM42bB5fsjzUhG0kCGehxc40mz4Mg8', NULL, NULL, '2022-02-21 02:24:53', '2022-02-25 08:35:17');
+(3, 'siams', 'siam@siam.com', NULL, '$2y$10$DmiBDPxBHMju.HAuvqorK.vrmBvzvm5rJ18vvlI7kZSb/1.prpdzO', NULL, NULL, 'Ue0pSS8aiA9FU49JVUOsOWp0vWdxglhozgYRnbYCUrw75KpFzvGCcGDsMlew', NULL, NULL, '2022-02-17 08:44:20', '2022-02-25 08:46:07'),
+(4, 'paes', 'pae@pae.com', NULL, '$2y$10$oSr5LJasgchSZ5QUzlYePOS4lhcFiIg0tj8ePz.Wt5KLpX9lRUm8a', NULL, NULL, 'I8TlIQ77VIWFbX0MBPhKBA8H2PmfXgj76cZV1dOxIqxr0cLDZZXBAxSu5hwF', NULL, NULL, '2022-02-21 02:24:53', '2022-02-25 08:46:55');
 
 --
 -- Indexes for dumped tables

@@ -28,8 +28,8 @@
                                     @foreach ($fetch_data as $row)
                                     <tr>
                                         <th scope="row">{{ $fetch_data->firstItem()+$loop->index }}</th>
-                                        <td>{{ $row->name }}</td>
-                                        <td>{{ $row->data }}</td>
+                                        <td>{{ $row->name }} </td>
+                                        <td>{{ $row->data + $row->data2 }}</td>
                                         {{-- <td>{{ $row->name }}</td> --}}
                                         {{-- <td>{{ Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</td> --}}
                                     </tr>
